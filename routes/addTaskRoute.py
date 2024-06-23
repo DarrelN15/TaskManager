@@ -3,10 +3,10 @@ from models import Task
 from app import db
 from datetime import datetime
 
-add_task_bp = Blueprint('add_task_bp', __name__)
+addTask_bp = Blueprint('addTask_bp', __name__)
 
-@add_task_bp.route('/add_task', methods=['GET', 'POST'])
-def add_task():
+@addTask_bp.route('/addTask', methods=['GET', 'POST'])
+def addTask():
     if 'user_id' not in session:
         return redirect(url_for('login_bp.login'))
     if request.method == 'POST':
@@ -20,4 +20,4 @@ def add_task():
         db.session.add(task)
         db.session.commit()
         return redirect(url_for('dashboard_bp.dashboard'))
-    return render_template('add_task.html')
+    return render_template('addTask.html')
