@@ -12,6 +12,7 @@
                 <th scope="col">Due Date</th>
                 <th scope="col">Priority</th>
                 <th scope="col">Status</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +23,15 @@
                 <td>{{ task.due_date.strftime('%Y-%m-%d') }}</td>
                 <td>{{ task.priority }}</td>
                 <td>{{ task.status }}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('editTask_bp.editTask', task_id=task.id) }}">Edit</a>
+                    <form action="{{ url_for('deleteTask_bp.deleteTask', task_id=task.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 {% endblock %}
-

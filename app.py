@@ -23,12 +23,16 @@ def create_app():
     from routes.dashboardRoute import dashboard_bp
     from routes.addTaskRoute import addTask_bp
     from routes.homeRoute import home_bp  # Import the new home blueprint
+    from routes.editTaskRoute import editTask_bp  # Import the edit task blueprint
+    from routes.deleteTaskRoute import deleteTask_bp  # Import the delete task blueprint
 
     app.register_blueprint(login_bp)
     app.register_blueprint(register_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(addTask_bp)
     app.register_blueprint(home_bp)  # Register the new home blueprint
+    app.register_blueprint(editTask_bp)  # Register the edit task blueprint
+    app.register_blueprint(deleteTask_bp)  # Register the delete task blueprint
 
     return app
 
